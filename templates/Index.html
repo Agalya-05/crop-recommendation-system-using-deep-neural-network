@@ -1,1 +1,75 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <style>
+        /* Add custom styles here */
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 2px;
+            border-radius: 2px;
+            box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="form-container">
+                    <h1>Crop Prediction</h1>
+                    <form action="/predict" method="post">
+                        <div class="mb-3">
+                            <label for="Nitrogen" class="form-label">Nitrogen:</label>
+                            <input type="number" class="form-control" id="Nitrogen" name="Nitrogen" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Phosporus" class="form-label">Phosphorus:</label>
+                            <input type="number" class="form-control" id="Phosporus" name="Phosporus" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Potassium" class="form-label">Potassium:</label>
+                            <input type="number" class="form-control" id="Potassium" name="Potassium" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Temperature" class="form-label">Temperature:</label>
+                            <input type="number" class="form-control" id="Temperature" name="Temperature" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Humidity" class="form-label">Humidity:</label>
+                            <input type="number" class="form-control" id="Humidity" name="Humidity" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Ph" class="form-label">pH:</label>
+                            <input type="number" class="form-control" id="Ph" name="Ph" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Rainfall" class="form-label">Rainfall:</label>
+                            <input type="number" class="form-control" id="Rainfall" name="Rainfall" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Predict</button>
+                    </form>
+                    <div class="mt-3">
+                        {% if prediction_text %}
+                            <p class="lead">Recommended Crop: {{ prediction_text }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
